@@ -4,7 +4,6 @@ pipeline {
         stage('build') {
             steps {
                 sh 'python --version'
-                sh 'docker build -t just_for_test .'
             }
         }
         stage('test') {
