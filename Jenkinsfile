@@ -4,7 +4,18 @@ pipeline {
         stage('build') {
             steps {
                 sh 'python --version'
-                sh 'python install pytest'
+                sh 'docker build -t just_for_test .'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'pip3 install pytest'
+                sh 'pytest'
+            }
+        }
+        stage('package') {
+            steps {
+                sh 'pytest'
             }
         }
     }
